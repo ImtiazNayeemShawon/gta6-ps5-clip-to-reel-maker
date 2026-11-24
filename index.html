@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GTA 6 PS5 Clip to Reel Maker</title>
+<meta name="description" content="Turn PS5 gameplay clips into 9:16 reels with a blurred background. No cropping, no uploads, all in your browser.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='7' y='1' width='18' height='30' rx='4' fill='%237b2596'/%3E%3Crect x='7' y='10' width='18' height='12' fill='%23ff5fa2'/%3E%3Ccircle cx='16' cy='17' r='5' fill='%23ffd27d'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="font.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <aside class="side"><div class="side-in">
+    <header>
+      <img class="logo" src="art/logo.png" alt="" onload="document.documentElement.classList.add('art')" onerror="this.remove()">
+      <h1><span class="big">GTA 6</span> PS5 clip to reel maker</h1>
+      <p class="lede">Your whole clip in 9:16, with blur above and below. Nothing leaves this device.</p>
+    </header>
+    <span class="btn main wide call pick">Add clips<input type="file" class="file-in" accept="video/*,.mp4,.webm,.mov,.mkv" multiple aria-label="Add clips"></span>
+    <div class="settings">
+      <div class="field">
+        <label for="blur">Blur <output id="blurOut"></output></label>
+        <input type="range" id="blur" min="0" max="100">
+      </div>
+      <div class="field">
+        <label for="dim">Darken blur <output id="dimOut"></output></label>
+        <input type="range" id="dim" min="0" max="80">
+      </div>
+      <div class="field">
+        <label for="size">Size</label>
+        <select id="size">
+          <option value="1080">1080 × 1920 (standard)</option>
+          <option value="2160">2160 × 3840 (4K, slower)</option>
+        </select>
+      </div>
+      <p class="hint">Changes apply to clips that haven't started. Use Redo on a finished clip to remake it.</p>
+    </div>
+    <p class="fine">Free, open-source fan project. Not affiliated with or endorsed by Rockstar Games, Take-Two Interactive or Sony.</p>
+  </div></aside>
+
+  <main class="main-col">
+    <div class="scene" aria-hidden="true"></div>
+    <p class="notice" id="notice" role="alert" hidden></p>
+    <div class="empty" id="empty">
+      <h2>Drop your clips</h2>
+      <p>Add 15 or more at once. They're made one by one and start right away.</p>
+      <span class="btn main call pick">Choose files<input type="file" class="file-in" accept="video/*,.mp4,.webm,.mov,.mkv" multiple aria-label="Choose files"></span>
+    </div>
+    <div id="work" hidden>
+      <div class="bar">
+        <div class="progress">
+          <div class="stars" id="stars" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 1.6l3.2 6.9 7.5.9-5.5 5.2 1.4 7.5L12 18.4l-6.6 3.7 1.4-7.5L1.3 9.4l7.5-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 1.6l3.2 6.9 7.5.9-5.5 5.2 1.4 7.5L12 18.4l-6.6 3.7 1.4-7.5L1.3 9.4l7.5-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 1.6l3.2 6.9 7.5.9-5.5 5.2 1.4 7.5L12 18.4l-6.6 3.7 1.4-7.5L1.3 9.4l7.5-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 1.6l3.2 6.9 7.5.9-5.5 5.2 1.4 7.5L12 18.4l-6.6 3.7 1.4-7.5L1.3 9.4l7.5-.9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 1.6l3.2 6.9 7.5.9-5.5 5.2 1.4 7.5L12 18.4l-6.6 3.7 1.4-7.5L1.3 9.4l7.5-.9z"/></svg></div>
+          <span class="status" id="status" role="status"></span>
+        </div>
+        <button class="btn" id="clearDone">Clear finished</button>
+        <button class="btn main" id="saveAll">Download all</button>
+      </div>
+      <ul class="grid" id="grid"></ul>
+    </div>
+  </main>
+</div>
+<script src="mediabunny.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

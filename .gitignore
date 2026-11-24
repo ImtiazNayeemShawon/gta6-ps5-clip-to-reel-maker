@@ -1,0 +1,5 @@
+.DS_Store
+
+# Rockstar Games artwork: personal use only, never commit it
+art/*
+!art/README.md
